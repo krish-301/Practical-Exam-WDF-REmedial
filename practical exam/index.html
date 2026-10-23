@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Share feedback about your teaching and practical lab experience.">
+  <title>Student Feedback Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="#home">Student Feedback</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#feedback-form">Give feedback</a></li>
+          <li><a href="#results">Results</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Your opinion helps us improve</p>
+      <h1 id="page-title">Teaching and lab feedback</h1>
+      <p>Tell us about your learning experience. Rate each area from 1 (poor) to 5 (excellent).</p>
+    </section>
+
+    <section class="page-layout" aria-label="Feedback form and results">
+      <section class="form-card" id="feedback-form" aria-labelledby="form-title">
+        <h2 id="form-title">Feedback form</h2>
+        <p class="help-text">Fields marked as required must be completed.</p>
+
+        <form id="feedbackForm" novalidate>
+          <fieldset>
+            <legend>Student details</legend>
+            <div class="form-group">
+              <label for="studentName">Student name <span aria-hidden="true">*</span></label>
+              <input type="text" id="studentName" name="studentName" autocomplete="name" aria-describedby="studentNameError">
+              <small class="error-message" id="studentNameError" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label for="courseName">Course name <span aria-hidden="true">*</span></label>
+              <input type="text" id="courseName" name="courseName" aria-describedby="courseNameError">
+              <small class="error-message" id="courseNameError" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label for="facultyName">Faculty name <span aria-hidden="true">*</span></label>
+              <input type="text" id="facultyName" name="facultyName" aria-describedby="facultyNameError">
+              <small class="error-message" id="facultyNameError" aria-live="polite"></small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Rate each area from 1 to 5</legend>
+            <div class="form-group">
+              <label for="teachingRating">Teaching rating</label>
+              <input type="number" id="teachingRating" name="teachingRating" min="1" max="5" step="0.1" placeholder="For example, 4.5" aria-describedby="teachingRatingError">
+              <small class="error-message" id="teachingRatingError" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label for="practicalRating">Practical lab rating</label>
+              <input type="number" id="practicalRating" name="practicalRating" min="1" max="5" step="0.1" placeholder="For example, 4" aria-describedby="practicalRatingError">
+              <small class="error-message" id="practicalRatingError" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label for="contentRating">Content rating</label>
+              <input type="number" id="contentRating" name="contentRating" min="1" max="5" step="0.1" placeholder="For example, 3.5" aria-describedby="contentRatingError">
+              <small class="error-message" id="contentRatingError" aria-live="polite"></small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Additional comments</legend>
+            <div class="form-group">
+              <label for="comments">Comments (optional)</label>
+              <textarea id="comments" name="comments" rows="4" placeholder="Share any other thoughts about your experience."></textarea>
+            </div>
+          </fieldset>
+
+          <div class="button-row">
+            <button class="button button-primary" id="submitFeedback" type="button">Submit feedback</button>
+            <button class="button button-secondary" id="resetFeedback" type="button">Reset feedback</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="results-card" id="results" aria-labelledby="results-title">
+        <p class="eyebrow">Your feedback at a glance</p>
+        <h2 id="results-title">Feedback results</h2>
+        <p class="empty-message" id="feedbackSummary" aria-live="polite">Your feedback summary will appear here after submission.</p>
+        <div class="result-details" id="resultDetails" hidden>
+          <p><strong>Average rating:</strong> <span id="averageResult"></span> / 5</p>
+          <p><strong>Percentage score:</strong> <span id="percentageResult"></span>%</p>
+          <p><strong>Teaching:</strong> <span id="teachingResult"></span> / 5</p>
+          <p><strong>Practical lab:</strong> <span id="practicalResult"></span> / 5</p>
+          <p><strong>Content:</strong> <span id="contentResult"></span> / 5</p>
+          <p><strong>Area needing the most improvement:</strong> <span id="lowestResult"></span></p>
+          <p><strong>Rating counts:</strong></p>
+          <ul class="rating-counts" id="ratingCounts"></ul>
+          <p class="high-rating-message" id="highRatingMessage"></p>
+          <p><strong>Your comment:</strong></p>
+          <p class="comment-result" id="commentResult"></p>
+          <p><strong>Improvement suggestion:</strong></p>
+          <p class="suggestion-result" id="suggestionResult"></p>
+        </div>
+        <p class="classification-result" id="classificationResult" aria-live="polite"></p>
+        <aside class="recommendation" id="recommendation" aria-live="polite">
+          <p id="recommendationText">A recommendation will appear here after you submit your feedback.</p>
+        </aside>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Thank you for helping us make learning better.</p>
+  </footer>
+</body>
+</html>
